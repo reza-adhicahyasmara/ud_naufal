@@ -3,6 +3,7 @@ defined('BASEPATH') || exit('No direct script access allowed');
 
 class Mod_master extends CI_Model {
 
+    //==========KARYAWAN==========//
     function get_all_karyawan(){ 
         $this->db->order_by('nama_karyawan ASC');
         return $this->db->get('karyawan'); 
@@ -47,5 +48,44 @@ class Mod_master extends CI_Model {
         $this->db->where('username_karyawan ', $username_karyawan);
         $this->db->where('password_karyawan ', $password_karyawan);
         return $this->db->get('karyawan');
+    }
+
+    
+
+    //==========KARYAWAN==========//
+    function get_all_distributor(){ 
+        $this->db->order_by('nama_distributor ASC');
+        return $this->db->get('distributor'); 
+    }
+
+    function get_distributor($id_distributor){
+        $this->db->where('id_distributor', $id_distributor);
+        $this->db->order_by('nama_distributor ASC');
+        return $this->db->get('distributor');
+    }
+    
+    function get_username_distributor($username_distributor){
+        $this->db->where('username_distributor', $username_distributor);
+        return $this->db->get('distributor');
+    }
+
+    function insert_distributor($data){
+        $this->db->insert('distributor', $data);
+    }
+
+    function update_distributor($id_distributor, $data){
+        $this->db->where('id_distributor', $id_distributor);
+		$this->db->update('distributor', $data);
+    }
+
+    function delete_distributor($id_distributor){
+        $this->db->where('id_distributor', $id_distributor);
+        $this->db->delete('distributor');
+    }
+
+    function auth_distributor($username, $password){
+        $this->db->where('username_distributor', $username);
+        $this->db->where('password_distributor', $password);
+        return $this->db->get('distributor');
     }
 }

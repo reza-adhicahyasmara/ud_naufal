@@ -260,12 +260,12 @@ by exitus
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/Distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
 
                             <li class="nav-header text-bold">Transaksi</li>   
                             <!-- <li class="nav-item"><a href="<?php echo base_url('admin/transaksi/antar_ekspedisi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi Antar Ekspedisi<?php if($total_pemesanan_ae != 0){ ?><span class="badge badge-warning right"> <?php echo $total_pemesanan_ae; ?></span><?php } ?></p></a></li> -->
 
                             <li class="nav-header text-bold">Master Data</li>      
+                            <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package nav-icon"></i><p>Produk <?php if($limit_tok_produk != 0){ ?><span class="badge badge-warning right"> <?php echo $limit_tok_produk; ?></span><?php } ?></p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/merek'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-flag"></i><p>Merek</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/kategori_produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-bookmark"></i><p>Kategori Produk</p></a></li>
@@ -289,7 +289,6 @@ by exitus
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/Distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
 
                             <li class="nav-header text-bold">Analisa Data</li>  
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/kata_konsumen'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-smile"></i><p>Kata Konsumen</p></a></li>
@@ -297,6 +296,7 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/performa_produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-chart-bar"></i><p>Performa Produk</p></a></li>
 
                             <li class="nav-header text-bold">Master Data</li>  
+                            <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/diskon'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-percent"></i><p>Acara Diskon</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-users"></i><p>Karyawan</p></a></li>
