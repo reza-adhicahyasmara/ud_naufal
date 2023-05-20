@@ -3,7 +3,7 @@ defined('BASEPATH') || exit('No direct script access allowed');
 
 class Mod_master extends CI_Model {
 
-    //==========KARYAWAN==========//
+    //==========   KARYAWAN   ==========//
     function get_all_karyawan(){ 
         $this->db->order_by('nama_karyawan ASC');
         return $this->db->get('karyawan'); 
@@ -52,7 +52,7 @@ class Mod_master extends CI_Model {
 
     
 
-    //==========KARYAWAN==========//
+    //==========   DISTRIBUTOR   ==========//
     function get_all_distributor(){ 
         $this->db->order_by('nama_distributor ASC');
         return $this->db->get('distributor'); 
@@ -87,5 +87,33 @@ class Mod_master extends CI_Model {
         $this->db->where('username_distributor', $username);
         $this->db->where('password_distributor', $password);
         return $this->db->get('distributor');
+    }
+
+    
+
+    //==========   KATEGORI   ==========//
+    function get_all_kategori(){ 
+        $this->db->order_by('nama_kategori ASC');
+        return $this->db->get('kategori'); 
+    }
+
+    function get_kategori($kode_kategori){
+        $this->db->where('kode_kategori', $kode_kategori);
+        $this->db->order_by('nama_kategori ASC');
+        return $this->db->get('kategori');
+    }
+
+    function insert_kategori($data){
+        $this->db->insert('kategori', $data);
+    }
+
+    function update_kategori($kode_kategori, $data){
+        $this->db->where('kode_kategori', $kode_kategori);
+		$this->db->update('kategori', $data);
+    }
+
+    function delete_kategori($kode_kategori){
+        $this->db->where('kode_kategori', $kode_kategori);
+        $this->db->delete('kategori');
     }
 }

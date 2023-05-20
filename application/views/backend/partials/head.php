@@ -267,8 +267,7 @@ by exitus
                             <li class="nav-header text-bold">Master Data</li>      
                             <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package nav-icon"></i><p>Produk <?php if($limit_tok_produk != 0){ ?><span class="badge badge-warning right"> <?php echo $limit_tok_produk; ?></span><?php } ?></p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/merek'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-flag"></i><p>Merek</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/kategori_produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-bookmark"></i><p>Kategori Produk</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/kategori'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-bookmark"></i><p>Kategori</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Karyawan</p></a></li>
                                 
 
