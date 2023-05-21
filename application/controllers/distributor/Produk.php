@@ -116,7 +116,7 @@ class Produk extends CI_Controller {
                     'tanggal_produk'            => $tanggal_produk,
                     'perubahan_produk'          => $perubahan_produk,
                     'perubahan_harga_produk'    => $perubahan_harga_produk,
-                    'status_penawaran_produk'   => "Belum di Acc",
+                    'status_penawaran_produk'   => "Baru",
                 );
 
                 $this->Mod_master->insert_produk($data);   

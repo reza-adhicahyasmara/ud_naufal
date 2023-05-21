@@ -10,6 +10,7 @@
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Harga (Rp.)</th>
             <th colspan="3" id="" style="text-align: center; vertical-align: middle; ">Stok UD Naufal</th>
             <th colspan="3" id="" style="text-align: center; vertical-align: middle; ">Stok Distributor</th>
+            <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Status<br>Penawaran</th>
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Aksi</th>
         </tr>
         <tr>
@@ -70,8 +71,21 @@
                     }
                 ?>
             </td>
+            <td style="text-align: center; vertical-align: middle;">
+                <?php
+                    if($row->status_penawaran_produk == "Baru"){
+                        echo "<span class='badge rounded-pill bg-info text-sm'>".$row->status_penawaran_produk."</span>";
+                    }elseif($row->status_penawaran_produk== "Ditawarkan"){
+                        echo "<span class='badge rounded-pill bg-info text-sm'>".$row->status_penawaran_produk."</span>";
+                    }elseif($row->status_penawaran_produk== "Diterima"){
+                        echo "<span class='badge rounded-pill bg-success text-sm'>".$row->status_penawaran_produk."</span>";
+                    }elseif($row->status_penawaran_produk== "Ditolak"){
+                        echo "<span class='badge rounded-pill bg-danger text-sm'>".$row->status_penawaran."</span>";
+                    }
+                ?>
+            </td>
             <td style="text-align: center; vertical-align: middle;" >
-                <a class='btn btn-primary btn-sm btn-rounded btn_edit_produk' kode_produk="<?php echo $row->kode_produk; ?>"><span class="bx bx-fw bx-pencil"></span></a>
+                <a class='btn btn-info btn-sm btn-rounded btn_edit_produk' kode_produk="<?php echo $row->kode_produk; ?>"><span class="bx bx-fw bx-pencil"></span></a>
             </td>
         </tr>
         <?php

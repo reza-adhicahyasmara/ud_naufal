@@ -270,6 +270,7 @@ by exitus
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
 
                             <li class="nav-header text-bold">Transaksi</li>   
                             <li class="nav-item"><a href="<?php echo base_url('admin/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi<?php if($total_transaksi_tok != 0){ ?><span class="badge badge-warning right"> <?php echo $total_transaksi_tok; ?></span><?php } ?></p></a></li>

@@ -174,4 +174,42 @@ class Mod_master extends CI_Model {
         $this->db->where('kode_produk', $kode);
         $this->db->delete('produk');
     }
+
+    
+
+    //==========   PENAWARAN   ==========//
+
+    function get_all_penawaran_distributor(){ 
+        $this->db->select('penawaran.*, distributor.*');
+        $this->db->join('distributor', 'distributor.id_distributor = penawaran.id_distributor', 'left');
+        $this->db->order_by('penawaran.tanggal_penawaran DESC');
+        return $this->db->get('penawaran'); 
+    }
+    
+    function get_penawaran_distributor($id_distributor){ 
+        $this->db->select('penawaran.*, distributor.*');
+        $this->db->join('distributor', 'distributor.id_distributor = penawaran.id_distributor', 'left');
+        $this->db->where('penawaran.id_distributor', $id_distributor);
+        $this->db->order_by('penawaran.tanggal_penawaran DESC');
+        return $this->db->get('penawaran'); 
+    }
+
+    function get_penawaran($kode_penawaran){
+        $this->db->where('kode_penawaran', $kode_penawaran);
+        return $this->db->get('penawaran');
+    }
+
+    function insert_penawaran($data){
+        $this->db->insert('penawaran', $data);
+    }
+
+    function update_penawaran($kode_penawaran, $data){
+        $this->db->where('kode_penawaran', $kode_penawaran);
+		$this->db->update('penawaran', $data);
+    }
+
+    function delete_penawaran($kode){
+        $this->db->where('kode_penawaran', $kode);
+        $this->db->delete('penawaran');
+    }
 }
