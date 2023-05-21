@@ -305,7 +305,7 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/performa_produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-chart-bar"></i><p>Performa Produk</p></a></li>
 
                             <li class="nav-header text-bold">Master Data</li>  
-                            <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/diskon'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-percent"></i><p>Acara Diskon</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-users"></i><p>Karyawan</p></a></li>
@@ -322,8 +322,8 @@ by exitus
                                     <p class="text-md" style="margin-left:10px; vertical-align: middle;"><?php echo $data_distributor['nama_distributor']; ?></p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item"><a href="<?php echo base_url('profil_distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Profil</p></a></li>
-                                    <li class="nav-item"><a href="<?php echo base_url('profil_distributor/ubah_password'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-lock"></i><p>Ubah Password</p></a></li>
+                                    <li class="nav-item"><a href="<?php echo base_url('distributor/profil'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Profil</p></a></li>
+                                    <li class="nav-item"><a href="<?php echo base_url('distributor/profil/ubah_password'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-lock"></i><p>Ubah Password</p></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
