@@ -27,6 +27,11 @@ class Karyawan extends CI_Controller {
         $this->load->view('backend/admin/karyawan/load_admin', $data);
     }
 
+    function load_data_kasir(){
+        $data['kasir'] = $this->Mod_master->get_all_karyawan();
+        $this->load->view('backend/admin/karyawan/load_kasir', $data);
+    }
+
     function load_data_pemilik(){
         $data['pemilik'] = $this->Mod_master->get_all_karyawan();
         $this->load->view('backend/admin/karyawan/load_pemilik', $data);

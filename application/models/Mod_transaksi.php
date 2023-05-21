@@ -44,7 +44,7 @@ class Mod_transaksi extends CI_Model {
 
 
     
-    //==========   KERANJANG   ==========//
+    //==========   KERANJANG PEMBELIAN  ==========//
 
     function get_all_item_pemesanan(){ 
         $this->db->select('ipembelian.*, produk.*, distributor.*, kategori.*');
@@ -122,6 +122,75 @@ class Mod_transaksi extends CI_Model {
     function delete_item_pemesanan($kode){
         $this->db->where('kode_ipembelian', $kode);
         $this->db->delete('ipembelian');
+    }
+
+
+    
+    //==========   PENJUALAN  ==========//
+
+    function get_all_penjualan(){ 
+        $this->db->select('penjualan.*');
+        $this->db->order_by('penjualan.tanggal_pengajuan_penjualan ASC');
+        return $this->db->get('penjualan'); 
+    }
+
+    function get_penjualan($kode_penjualan){
+        $this->db->select('penjualan.*');
+        $this->db->where('kode_penjualan', $kode_penjualan);
+        return $this->db->get('penjualan');
+    }
+
+    function insert_penjualan($data){
+        $insert = $this->db->insert('penjualan', $data);
+        return $insert;
+    }
+
+    function update_penjualan($kode_penjualan, $data){
+        $this->db->where('kode_penjualan', $kode_penjualan);
+		$this->db->update('penjualan', $data);
+    }
+
+
+    
+    //==========   KERANJANG PENJUALAN  ==========//
+
+    function get_all_item_penjualan(){ 
+        $this->db->select('ipenjualan.*, produk.*, kategori.*');
+        $this->db->join('produk', 'produk.kode_produk = ipenjualan.kode_produk', 'left');
+        $this->db->join('kategori', 'kategori.kode_kategori = produk.kode_kategori', 'left');
+        $this->db->order_by('produk.nama_produk ASC');
+        return $this->db->get('ipenjualan'); 
+    }
+
+    function get_item_penjualan($kode_ipenjualan){ 
+        $this->db->select('ipenjualan.*, produk.*, distributor.*, kategori.*');
+        $this->db->join('produk', 'produk.kode_produk = ipenjualan.kode_produk', 'left');
+        $this->db->join('kategori', 'kategori.kode_kategori = produk.kode_kategori', 'left');
+        $this->db->where('ipenjualan.kode_ipenjualan', $kode_ipenjualan);
+        $this->db->order_by('produk.nama_produk ASC');
+        return $this->db->get('ipenjualan'); 
+    }
+
+    function cek_item_penjualan($kode_produk){
+        $this->db->join('produk', 'produk.kode_produk = ipenjualan.kode_produk', 'left');
+        $this->db->where('produk.kode_produk', $kode_produk);
+        $this->db->where('ipenjualan.status_ipenjualan', 'Keranjang');
+        return $this->db->get('ipenjualan');
+    }
+
+    function insert_item_penjualan($data){
+        $insert = $this->db->insert('ipenjualan', $data);
+        return $insert;
+    }
+
+    function update_item_penjualan($kode_ipenjualan, $data){
+        $this->db->where('kode_ipenjualan', $kode_ipenjualan);
+		$this->db->update('ipenjualan', $data);
+    }
+
+    function delete_item_penjualan($kode){
+        $this->db->where('kode_ipenjualan', $kode);
+        $this->db->delete('ipenjualan');
     }
     
 

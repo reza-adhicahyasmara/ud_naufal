@@ -28,6 +28,9 @@ class Login extends CI_Controller {
             if($data['level_karyawan']=='Admin'){
                 echo "admin/dashboard";
             }
+            elseif($data['level_karyawan']=='Kasir'){ 
+                echo "kasir/kasir";
+            } 
             elseif($data['level_karyawan']=='Pemilik'){ 
                 echo "pemilik/dashboard";
             } 

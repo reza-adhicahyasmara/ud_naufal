@@ -34,6 +34,7 @@
         <div class="form-group">
             <select type="text" class="form-control" name="level_karyawan" id="level_karyawan" placeholder="Nama Lengkap" readonly>
                 <option value="Admin" <?php if($data_karyawan['level_karyawan'] == "Admin"){echo "selected";} ?>>Admin</option>
+                <option value="Kasir" <?php if($data_karyawan['level_karyawan'] == "Kasir"){echo "selected";} ?>>Kasir</option>
                 <option value="Pemilik" <?php if($data_karyawan['level_karyawan'] == "Pemilik"){echo "selected";} ?>>Pemilik</option>
             </select>
         </div>

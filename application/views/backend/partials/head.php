@@ -67,6 +67,10 @@
         $notifikasi = $limit_tok_produk + $total_pemesanan_tok;
 
     }
+    if($this->session->userdata('ses_akses') =='Kasir'){
+        $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
+        $url_foto = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
+    }
     $url_gambar_profil = base_url('assets/img/banner/user.svg');
 ?>  
 
@@ -336,6 +340,25 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/diskon'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-percent"></i><p>Acara Diskon</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-users"></i><p>Karyawan</p></a></li>
+                                
+
+                            <?php }elseif($this->session->userdata('ses_akses') =='Kasir'){?>
+                                <li class="nav-item has-treeview"> 
+                                    <a href="#" class="nav-link">
+                                        <?php if($data_karyawan['foto_karyawan'] != "") { ?>
+                                            <img src="<?php echo $url_foto; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover;" alt="Image">
+                                        <?php }else{ ?>
+                                            <img src="<?php echo $url_gambar_profil; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover; background-color:white; border:1px solid #ced4da;" alt="Image">
+                                        <?php } ?> 
+                                        <p class="text-md" style="margin-left:10px; vertical-align: middle;"><?php echo $data_karyawan['nama_karyawan']; ?></p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item"><a href="<?php echo base_url('profil_karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Profil</p></a></li>
+                                        <li class="nav-item"><a href="<?php echo base_url('profil_karyawan/ubah_password'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-lock"></i><p>Ubah Password</p></a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
+                                <li class="nav-item"><a href="<?php echo base_url('kasir/kasir'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calculator"></i><p>Kasir</p></a></li>
                     
                             
                         <?php }elseif($this->session->userdata('ses_akses') =='Distributor'){?>

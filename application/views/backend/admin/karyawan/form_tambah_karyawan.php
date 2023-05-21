@@ -29,6 +29,7 @@
             <select class="form-control" name="level_karyawan" id="level_karyawan">
                 <option value="">Pilih</option>
                 <option value="Admin">Admin</option>
+                <option value="Kasir">Kasir</option>
                 <option value="Pemilik">Pemilik</option>
             </select>
         </div>
@@ -99,7 +100,7 @@
         $("#level_karyawan").change(function() {
             var level_karyawan = $('#level_karyawan').val();
             
-            if(level_karyawan == "Pemilik" || level_karyawan == "Admin"){
+            if(level_karyawan == "Pemilik" || level_karyawan == "Admin" || level_karyawan == "Kasir"){
                 $("div#form_username").show(500);
                 $("div#form_password").show(500);
                 $('#username_karyawan_baru').attr('name', 'username_karyawan_baru');

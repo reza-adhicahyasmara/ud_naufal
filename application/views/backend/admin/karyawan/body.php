@@ -25,6 +25,9 @@
                             <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Admin<a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-four-kasir-tab" data-toggle="pill" href="#custom-tabs-four-kasir" role="tab" aria-controls="custom-tabs-four-kasir" aria-selected="false">Kasir</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="custom-tabs-four-pemilik-tab" data-toggle="pill" href="#custom-tabs-four-pemilik" role="tab" aria-controls="custom-tabs-four-pemilik" aria-selected="false">Pemilik</a>
                         </li>
                     </ul>
@@ -33,6 +36,11 @@
                     <div class="tab-content" id="custom-tabs-four-tabContent">
                         <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                             <div id="content_admin">
+                                <!--LOAD DATA-->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-kasir" role="tabpanel" aria-labelledby="custom-tabs-four-kasir-tab">
+                            <div id="content_kasir">
                                 <!--LOAD DATA-->
                             </div>
                         </div>
@@ -101,13 +109,27 @@
 		});
     };
 
+    load_data_kasir();
+    function load_data_kasir(){
+        $.ajax({
+            method : "GET",
+            url : "<?php echo base_url('admin/karyawan/load_data_kasir'); ?>",
+            beforeSend : function(){
+				$('#content_kasir').html('<div style="text-align:center"><i class="fa fa-refresh fa-spin fa-3x fa-fw" style="margin-top: 30px; margin-bottom: 30px;" aria-hidden="true"></i></div>');
+            },
+            success : function(response){
+                $('#content_kasir').html(response);
+            }
+        });
+    };
+
     load_data_pemilik();
     function load_data_pemilik(){
         $.ajax({
             method : "GET",
             url : "<?php echo base_url('admin/karyawan/load_data_pemilik'); ?>",
             beforeSend : function(){
-				$('#content_pemilik').html('<div style="text-align:center"><i class="fa fa-refresh fa-spin fa-3x fa-fw" style="margin-top: 30px; margin-bottom: 30px;" aria-hidden="true"></i></div>');
+                $('#content_pemilik').html('<div style="text-align:center"><i class="fa fa-refresh fa-spin fa-3x fa-fw" style="margin-top: 30px; margin-bottom: 30px;" aria-hidden="true"></i></div>');
             },
             success : function(response){
                 $('#content_pemilik').html(response);
@@ -220,6 +242,7 @@
                                         timer: 3000
                                     }).then(function(){
                                         load_data_admin();
+                                        load_data_kasir();
                                         load_data_pemilik();
                                         $('#modal_karyawan').modal('hide');
                                     });
@@ -269,6 +292,7 @@
                     })
                     .done(function(response) {
                         load_data_admin();
+                        load_data_kasir();
                         load_data_pemilik();
                         $('#modal_karyawan').modal('hide');
                         Swal.fire({
