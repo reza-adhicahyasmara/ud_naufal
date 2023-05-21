@@ -110,6 +110,8 @@ class Produk extends CI_Controller {
                     'nama_produk'               => $nama_produk,
                     'satuan_produk'             => $satuan_produk,
                     'harga_beli_produk'         => $harga_beli_produk_baru,
+                    'harga_jual_produk'         => 0,
+                    'limit_tok_produk'          => 0,
                     'stok_dis_produk'           => $stok_dis_produk,
                     'limit_dis_produk'          => $limit_dis_produk,
                     'gambar_produk'             => $gambar_produk,

@@ -12,7 +12,7 @@
         }
 
         if($this->session->userdata('ses_akses') =='Distributor'){
-            if($row->stok_dis_produk <= $row->limit_dis_produk && $row->status_penawaran_produk == "Diterima" && $row->id_distributor == $this->session->userdata('ses_id_distributor')){
+            if($row->stok_dis_produk <= $row->limit_dis_produk && $row->ID == $this->session->userdata('ses_id_distributor')){
                 $limit_dis_produk += 1;
             }
         }
@@ -32,7 +32,6 @@
         $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
         $url_foto = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
         
-        $limit_tok_produk = 0; 
         // foreach($this->Mod_master->get_all_produk()->result() as $row) {
         //     if($row->stok_tok_produk <= $row->limit_tok_produk){
         //         $limit_tok_produk += 1;
@@ -273,11 +272,11 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('admin/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
 
                             <li class="nav-header text-bold">Transaksi</li>   
-                            <li class="nav-item"><a href="<?php echo base_url('admin/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi<?php if($total_transaksi_tok != 0){ ?><span class="badge badge-warning right"> <?php echo $total_transaksi_tok; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi<?php if($total_transaksi_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_transaksi_tok; ?></span><?php } ?></p></a></li>
 
                             <li class="nav-header text-bold">Master Data</li>      
                             <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package nav-icon"></i><p>Produk <?php if($limit_tok_produk != 0){ ?><span class="badge badge-warning right"> <?php echo $limit_tok_produk; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package nav-icon"></i><p>Produk <?php if($limit_tok_produk != 0){ ?><span class="badge badge-danger right"> <?php echo $limit_tok_produk; ?></span><?php } ?></p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/kategori'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-bookmark"></i><p>Kategori</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Karyawan</p></a></li>
                                 
@@ -329,9 +328,9 @@ by exitus
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                             <li class="nav-item"><a href="<?php echo base_url('distributor/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('distributor/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk <?php if($limit_dis_produk != 0){ ?><span class="badge badge-danger right"> <?php echo $limit_dis_produk; ?></span><?php } ?></p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('distributor/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('distributor/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi<?php if($total_transaksi_dis != 0){ ?><span class="badge badge-warning right"> <?php echo $total_transaksi_dis; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi <?php if($total_transaksi_dis != 0){ ?><span class="badge badge-danger right"> <?php echo $total_transaksi_dis; ?></span><?php } ?></p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('distributor/rekening'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-credit-card"></i><p>Rekening</p></a></li>
                         <?php } ?> 
                     </ul>

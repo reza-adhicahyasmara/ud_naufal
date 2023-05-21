@@ -7,7 +7,7 @@
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Kode</th>
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Nama</th>
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Kategori</th>
-            <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Harga (Rp.)</th>
+            <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Harga</th>
             <th colspan="3" id="" style="text-align: center; vertical-align: middle; ">Stok UD Naufal</th>
             <th colspan="3" id="" style="text-align: center; vertical-align: middle; ">Stok Distributor</th>
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Status<br>Penawaran</th>
@@ -48,7 +48,7 @@
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->kode_produk;?></td>
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->nama_produk;?></td>
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->nama_kategori;?></td>
-            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->harga_beli_produk,0, ",", ".");?></td>
+            <td style="text-align: right; vertical-align: middle;"><?php echo "Rp. ".number_format($row->harga_beli_produk,0, ",", ".")." / ".$row->satuan_produk;?></td>
             <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->stok_tok_produk,0, ",", ".")." ".$row->satuan_produk;?></td>
             <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->limit_tok_produk,0, ",", ".")." ".$row->satuan_produk;?></td>
             <td style="text-align: center; vertical-align: middle;">
