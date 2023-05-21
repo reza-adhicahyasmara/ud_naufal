@@ -30,7 +30,7 @@
 
 <form role="form" id="form_produk" method="post">
     <div id="modal_produk" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <strong><span class="modal-title text-lg" id="myModalLabel"></span></strong>
@@ -100,6 +100,18 @@
                     limit_tok_produk: {
                         required: true,
                     },
+                    d_produk: {
+                        required: true,
+                    },
+                    h_produk: {
+                        required: true,
+                    },
+                    lt_produk: {
+                        required: true,
+                    },
+                    ss_produk: {
+                        required: true,
+                    },
                 },
                 messages: {
                     harga_jual_produk: {
@@ -107,6 +119,18 @@
                         minlength: "Minimal 4 Digit",
                     },
                     limit_tok_produk: {
+                        required: "Harus diisi",
+                    },
+                    d_produk: {
+                        required: "Harus diisi",
+                    },
+                    h_produk: {
+                        required: "Harus diisi",
+                    },
+                    lt_produk: {
+                        required: "Harus diisi",
+                    },
+                    ss_produk: {
                         required: "Harus diisi",
                     },
                 },

@@ -279,6 +279,7 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('admin/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package nav-icon"></i><p>Produk <?php if($limit_tok_produk != 0){ ?><span class="badge badge-danger right"> <?php echo $limit_tok_produk; ?></span><?php } ?></p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/kategori'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-bookmark"></i><p>Kategori</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Karyawan</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/rekening'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-credit-card"></i><p>Rekening Perusahaan</p></a></li>
                                 
 
                         <?php }elseif($this->session->userdata('ses_akses') =='Pimpinan'){?>
@@ -331,7 +332,7 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('distributor/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk <?php if($limit_dis_produk != 0){ ?><span class="badge badge-danger right"> <?php echo $limit_dis_produk; ?></span><?php } ?></p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('distributor/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('distributor/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi <?php if($total_transaksi_dis != 0){ ?><span class="badge badge-danger right"> <?php echo $total_transaksi_dis; ?></span><?php } ?></p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('distributor/rekening'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-credit-card"></i><p>Rekening</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/rekening'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-credit-card"></i><p>Rekening Perusahaan</p></a></li>
                         <?php } ?> 
                     </ul>
                     <ul class="nav nav-pills nav-sidebar nav-compact flex-column nav-child-indent" style="position: absolute; bottom: 10px;">

@@ -4,6 +4,7 @@ defined('BASEPATH') || exit('No direct script access allowed');
 class Mod_master extends CI_Model {
 
     //==========   KARYAWAN   ==========//
+
     function get_all_karyawan(){ 
         $this->db->order_by('nama_karyawan ASC');
         return $this->db->get('karyawan'); 
@@ -53,6 +54,7 @@ class Mod_master extends CI_Model {
     
 
     //==========   DISTRIBUTOR   ==========//
+
     function get_all_distributor(){ 
         $this->db->order_by('nama_distributor ASC');
         return $this->db->get('distributor'); 
@@ -91,7 +93,68 @@ class Mod_master extends CI_Model {
 
     
 
+    //==========   REKENING BANK   ==========//
+
+    function get_all_bank(){ 
+        $this->db->order_by('nama_bank ASC');
+        return $this->db->get('bank'); 
+    }
+
+    function get_bank($kode_bank){
+        $this->db->where('kode_bank', $kode_bank);
+        $this->db->order_by('nama_bank ASC');
+        return $this->db->get('bank');
+    }
+
+    function get_all_rekening(){ 
+        $this->db->select('bank.*, rekening.*');
+        $this->db->join('bank', 'bank.kode_bank = rekening.kode_bank');
+        $this->db->order_by('bank.nama_bank ASC');
+        return $this->db->get('rekening'); 
+    }
+
+    function get_rekening($kode_rekening){
+        $this->db->select('bank.*, rekening.*');
+        $this->db->join('bank', 'bank.kode_bank = rekening.kode_bank');
+        $this->db->where('kode_rekening', $kode_rekening);
+        $this->db->order_by('bank.nama_bank ASC');
+        return $this->db->get('rekening');
+    }
+
+    function get_rekening_dis($id_distributor){
+        $this->db->select('bank.*, rekening.*');
+        $this->db->join('bank', 'bank.kode_bank = rekening.kode_bank');
+        $this->db->where('id_distributor', $id_distributor);
+        $this->db->order_by('bank.nama_bank ASC');
+        return $this->db->get('rekening');
+    }
+
+    function get_rekening_tok(){
+        $this->db->select('bank.*, rekening.*');
+        $this->db->join('bank', 'bank.kode_bank = rekening.kode_bank');
+        $this->db->where('id', null);
+        $this->db->order_by('bank.nama_bank ASC');
+        return $this->db->get('rekening');
+    }
+
+    function insert_rekening($data){
+        $this->db->insert('rekening', $data);
+    }
+
+    function update_rekening($kode_rekening, $data){
+        $this->db->where('kode_rekening', $kode_rekening);
+        $this->db->update('rekening', $data);
+    }
+
+    function delete_rekening($kode){
+        $this->db->where('kode_rekening', $kode);
+        $this->db->delete('rekening');
+    } 
+
+    
+
     //==========   KATEGORI   ==========//
+
     function get_all_kategori(){ 
         $this->db->order_by('nama_kategori ASC');
         return $this->db->get('kategori'); 
@@ -119,7 +182,8 @@ class Mod_master extends CI_Model {
 
     
 
-    //==========   KATEGORI   ==========//
+    //==========   PRODUK   ==========//
+
     function get_all_produk(){ 
         $this->db->select('produk.*, distributor.*, kategori.*, penawaran.*, produk.id_distributor AS ID');
         $this->db->join('distributor', 'distributor.id_distributor = produk.id_distributor', 'inner');

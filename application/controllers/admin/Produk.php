@@ -46,12 +46,23 @@ class Produk extends CI_Controller {
         $kode_produk = $this->input->post('kode_produk');
         $limit_tok_produk = $this->input->post('limit_tok_produk');
         $harga_jual_produk = $this->input->post('harga_jual_produk');
+        $d_produk = $this->input->post('d_produk');
+        $h_produk = $this->input->post('h_produk');
+        $lt_produk = $this->input->post('lt_produk');
+        $ss_produk = $this->input->post('ss_produk');
+        $tahun = 365;
+        $au_produk = (float)$d_produk / (float)$tahun;
 
         echo 1;     
         $data_edit  = array( 
             'kode_produk'           => $kode_produk,
             'limit_tok_produk'      => $limit_tok_produk,
-            'harga_jual_produk'     => $harga_jual_produk    
+            'harga_jual_produk'     => $harga_jual_produk,
+            'd_produk'              => $d_produk,
+            'h_produk'              => $h_produk,
+            'lt_produk'             => $lt_produk,
+            'ss_produk'             => $ss_produk,
+            'au_produk'             => $au_produk
         );
 
         $this->Mod_master->update_produk($kode_produk, $data_edit);       

@@ -10,16 +10,22 @@
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Distributor</th>
             <th colspan="3" id="" style="text-align: center; vertical-align: middle; ">Harga</th>
             <th colspan="3" id="" style="text-align: center; vertical-align: middle; ">Stok</th>
+            <th colspan="5" id="" style="text-align: center; vertical-align: middle; ">EOQ & ROP</th>
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Update Data</th>
             <th rowspan="2" id="" style="text-align: center; vertical-align: middle; ">Aksi</th>
         </tr>
         <tr>
             <th id="" style="text-align: center; vertical-align: middle; ">Harga Beli</th>
             <th id="" style="text-align: center; vertical-align: middle; ">Harga Jual</th>
-            <th id="" style="text-align: center; vertical-align: middle; ">Perubahan Harga</th>
+            <th id="" style="text-align: center; vertical-align: middle; ">Perubahan<br>Harga</th>
             <th id="" style="text-align: center; vertical-align: middle; ">Stok Gudang</th>
             <th id="" style="text-align: center; vertical-align: middle; ">Stok Limit</th>
             <th id="" style="text-align: center; vertical-align: middle; ">Status</th>
+            <th id="" style="text-align: center; vertical-align: middle; ">D</th>
+            <th id="" style="text-align: center; vertical-align: middle; ">H</th>
+            <th id="" style="text-align: center; vertical-align: middle; ">LT</th>
+            <th id="" style="text-align: center; vertical-align: middle; ">SS</th>
+            <th id="" style="text-align: center; vertical-align: middle; ">AU</th>
         </tr>
     </thead>
     <tbody>
@@ -74,6 +80,11 @@
                     }
                     ?>
             </td>
+            <td style="text-align: left; vertical-align: middle;"><?php echo number_format($row->d_produk,0, ",", ".")." ".$row->satuan_produk;?></td>
+            <td style="text-align: left; vertical-align: middle;"><?php echo "Rp. ".number_format($row->h_produk,0, ",", ".");?></td>
+            <td style="text-align: left; vertical-align: middle;"><?php echo number_format($row->lt_produk,0, ",", ".")." Hari";?></td>
+            <td style="text-align: left; vertical-align: middle;"><?php echo number_format($row->ss_produk,0, ",", ".")." ".$row->satuan_produk;?></td>
+            <td style="text-align: left; vertical-align: middle;"><?php echo number_format($row->au_produk,2, ",", ".")." ".$row->satuan_produk;;?></td>
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->tanggal_produk;?></td>
             <td style="text-align: center; vertical-align: middle;" >
                 <a class='btn btn-info btn-sm btn-rounded btn_edit_produk' kode_produk="<?php echo $row->kode_produk; ?>"><span class="bx bx-fw bx-pencil" style="margin:3px"></span></a>

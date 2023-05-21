@@ -1,4 +1,5 @@
 <input type="hidden" name="jenis" id="jenis" value="Edit">
+<h4>Informasi Produk</h4>
 <div class="row">
     <div class="col-4">
         <h6 class="text-bold pt-2 float-right">Distributor</h6>
@@ -76,6 +77,50 @@
     <div class="col-8">
         <div class="form-group">
             <input type="text" class="form-control" name="limit_tok_produk" id="limit_tok_produk" onkeypress="return /[0-9.]/i.test(event.key)" value="<?php echo $edit['limit_tok_produk']; ?>" placeholder="<?php echo $edit['satuan_produk']; ?>">
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<br>
+<h4>Manual EOQ & ROP</h4>
+<div class="row">
+    <div class="col-4">
+        <h6 class="text-bold pt-2 float-right">Permintaan Pertahun (D) <?php echo $edit['satuan_produk']; ?></h6>
+    </div>
+    <div class="col-8">
+        <div class="form-group">
+            <input type="text" class="form-control" name="d_produk" id="d_produk" onkeypress="return /[0-9.]/i.test(event.key)" value="<?php echo $edit['d_produk']; ?>" placeholder="<?php echo $edit['satuan_produk']; ?>">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <h6 class="text-bold pt-2 float-right">Biaya Penyimpanan Perunit (H) Rp</h6>
+    </div>
+    <div class="col-8">
+        <div class="form-group">
+            <input type="text" class="form-control" name="h_produk" id="h_produk" onkeypress="return /[0-9.]/i.test(event.key)" value="<?php echo $edit['h_produk']; ?>" placeholder="Rp">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <h6 class="text-bold pt-2 float-right">Lead Time (LT) Hari</h6>
+    </div>
+    <div class="col-8">
+        <div class="form-group">
+            <input type="text" class="form-control" name="lt_produk" id="lt_produk" onkeypress="return /[0-9.]/i.test(event.key)" value="<?php echo $edit['lt_produk']; ?>" placeholder="Hari">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <h6 class="text-bold pt-2 float-right">Safety Stock (SS) <?php echo $edit['satuan_produk']; ?> </h6>
+    </div>
+    <div class="col-8">
+        <div class="form-group">
+            <input type="text" class="form-control" name="ss_produk" id="ss_produk" onkeypress="return /[0-9.]/i.test(event.key)" value="<?php echo $edit['ss_produk']; ?>" placeholder="<?php echo $edit['satuan_produk']; ?>">
         </div>
     </div>
 </div>
