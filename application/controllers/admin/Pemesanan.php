@@ -146,7 +146,7 @@ class Pemesanan extends CI_Controller {
         $kode_rekening = $this->input->post('kode_rekening');
         $total_pby_pembelian = $this->input->post('total_pby_pembelian');
         $tanggal_pengajuan_pembelian = date('Y-m-d H:m:s');
-        $kode_pembelian = 'INV-'.date('YmdHms').'-'.$id_distributor;
+        $kode_pembelian = 'INV-'.date('YmdHms');
         $status_pembelian = '1';
         $status_pby_pembelian = 'Belum Dibayarkan';
 

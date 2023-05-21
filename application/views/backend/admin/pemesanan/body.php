@@ -28,12 +28,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-1 text-dark"><i class="nav-icon bx bx-fw bx-calendar-check"></i> Pemesanan</h1>
+                    <h1 class="m-1 text-dark"><i class="nav-icon bx bx-fw bx-book"></i> Pembelian</h1>
                 </div>
                 <div class="col-sm-6 float-sm-right">
                     <ol class="breadcrumb float-sm-right m-2">
-                        <span class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>">Dashboard</a></span>
-                        <span class="breadcrumb-item active">Pemesanan</span>
                     </ol>
                 </div>
             </div>

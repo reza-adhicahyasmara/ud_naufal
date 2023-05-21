@@ -10,13 +10,12 @@
             <th id="" style="text-align: center; vertical-align: middle;">Harga (Rp.)</th>
             <th id="" style="text-align: center; vertical-align: middle;">Qty</th>
             <th id="" style="text-align: center; vertical-align: middle;">Subtotal (Rp.)</th>
-            <th id="" style="text-align: center; vertical-align: middle;">Status Item</th>
         </tr>
     </thead>
     <tbody>
         <?php 
             $no = 1;
-            $subtotal_ipembelian = 0;
+            $subtotal_ipenjualan = 0;
             foreach($list_produk->result() as $row) {
         ?>
         <tr>
@@ -39,27 +38,16 @@
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->kode_produk;?></td>
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->nama_produk;?></td>
             <td style="text-align: left; vertical-align: middle;"><?php echo $row->nama_kategori;?></td>
-            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->harga_ipembelian, 0, ".", ".");?></td>
-            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->qty_ipembelian, 0, ".", ".")." ".$row->satuan_produk;?></td>
-            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($subtotal_ipembelian += $row->subtotal_ipembelian, 0, ".", ".");?></td>
-            <td style="text-align: center; vertical-align: middle;">
-                <?php 
-                    $status_ipembelian = $row->status_ipembelian;
-                    if($status_ipembelian == "Retur"){
-                        echo "Retur<br>Jumlah : ".$row->qty_retur_ipembelian."<br>Ket : ".$row->keterangan_retur_ipembelian;
-                    }else{
-                        echo $status_ipembelian;
-                    }
-                ?>
-            </td>
+            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->harga_ipenjualan, 0, ".", ".");?></td>
+            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($row->qty_ipenjualan, 0, ".", ".")." ".$row->satuan_produk;?></td>
+            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($subtotal_ipenjualan += $row->subtotal_ipenjualan, 0, ".", ".");?></td>
         </tr>
             <?php $no++; } ?>
     </tbody>
     <tfoot>
         <tr>
             <td colspan="7" style="text-align: right; vertical-align: middle;">Total</td>
-            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($subtotal_ipembelian, 2, ",", "."); ?></td>
-            <td></td>
+            <td style="text-align: right; vertical-align: middle;"><?php echo number_format($subtotal_ipenjualan, 2, ",", "."); ?></td>
         </tr>
     </tfoot>
 </table>

@@ -17,9 +17,12 @@
     
     <section class="content">
         <div class="container-fluid">
-            <div class="card card-secondary card-outline card-outline-tabs">
+            <div class="card card-outline card-info">
                 <div class="card-body">
-                    <label>Masukan Invoice Jika Produk Sudah Sampai</label>
+                    <h4>Pembelian Produk Distributor</h4>
+                    <caption>Masukan Invoice Jika Produk Sudah Sampai</caption>
+                    <br>
+                    <br>
                     <select class="form-control kode_pembelian" name="kode_pembelian" id="kode_pembelian">
                         <option value="">Pilih</option>
                         <?php 
@@ -40,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card card-secondary card-outline card-outline-tabs">
+            <div class="card card-outline card-info">
                 <div class="card-body">
                     <div id="content_produk_masuk">
                         <!--LOAD DATA-->

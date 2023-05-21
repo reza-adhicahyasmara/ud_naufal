@@ -52,7 +52,7 @@
         <td style="text-align: left; vertical-align: middle;"><?php echo $tmp->nama_produk;?></td>
         <td style="text-align: left; vertical-align: middle;"><?php echo $tmp->nama_kategori;?></td>
         <td style="text-align: right; vertical-align: middle;"><?php echo number_format($tmp->harga_ipembelian, 0, ".", ".");?></td>
-        <td style="text-align: right; vertical-align: middle;"><?php echo number_format($tmp->qty_ipembelian, 0, ".", ".");?></td>
+        <td style="text-align: right; vertical-align: middle;"><?php echo number_format($tmp->qty_ipembelian, 0, ".", ".")." ".$row->satuan_produk;?></td>
         <td style="text-align: right; vertical-align: middle;"><?php echo number_format($tmp->subtotal_ipembelian, 0, ".", ".");?></td>
         <td style="text-align: center; vertical-align: middle;">
             <a class='btn btn-danger btn-sm btn-rounded btn_hapus_item_pemesanan' kode_ipembelian="<?php echo $tmp->kode_ipembelian; ?>"><i class="bx bx-fw bx-trash"></i></a>

@@ -300,9 +300,13 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
 
-                            <li class="nav-header text-bold">Transaksi Produk</li>   
-                            <li class="nav-item"><a href="<?php echo base_url('admin/pemesanan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Pemesanan<?php if($total_pemesanan_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_pemesanan_tok; ?></span><?php } ?></p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/produk_masuk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-down-arrow-alt"></i><p>Masuk</p></a></li>
+                            <li class="nav-header text-bold">Transaksi</li>   
+                            <li class="nav-item"><a href="<?php echo base_url('admin/pemesanan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Pembelian<?php if($total_pemesanan_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_pemesanan_tok; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/penjualan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Penjualan</p></a></li>
+
+                            <li class="nav-header text-bold">Arus Produk</li>  
+                            <li class="nav-item"><a href="<?php echo base_url('admin/produk_masuk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-down-arrow-alt"></i><p>Stok Masuk</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/produk_keluar'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-up-arrow-alt"></i><p>Stok Keluar</p></a></li>
 
                             <li class="nav-header text-bold">Master Data</li>      
                             <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
@@ -359,6 +363,7 @@ by exitus
                                 </li>
                                 <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                                 <li class="nav-item"><a href="<?php echo base_url('kasir/kasir'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calculator"></i><p>Kasir</p></a></li>
+                                <li class="nav-item"><a href="<?php echo base_url('kasir/penjualan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Penjualan</p></a></li>
                     
                             
                         <?php }elseif($this->session->userdata('ses_akses') =='Distributor'){?>

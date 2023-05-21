@@ -130,7 +130,7 @@ class Mod_transaksi extends CI_Model {
 
     function get_all_penjualan(){ 
         $this->db->select('penjualan.*');
-        $this->db->order_by('penjualan.tanggal_pengajuan_penjualan ASC');
+        $this->db->order_by('penjualan.tanggal_penjualan ASC');
         return $this->db->get('penjualan'); 
     }
 
@@ -162,11 +162,11 @@ class Mod_transaksi extends CI_Model {
         return $this->db->get('ipenjualan'); 
     }
 
-    function get_item_penjualan($kode_ipenjualan){ 
-        $this->db->select('ipenjualan.*, produk.*, distributor.*, kategori.*');
+    function get_item_penjualan($kode_penjualan){ 
+        $this->db->select('ipenjualan.*, produk.*, kategori.*');
         $this->db->join('produk', 'produk.kode_produk = ipenjualan.kode_produk', 'left');
         $this->db->join('kategori', 'kategori.kode_kategori = produk.kode_kategori', 'left');
-        $this->db->where('ipenjualan.kode_ipenjualan', $kode_ipenjualan);
+        $this->db->where('ipenjualan.kode_penjualan', $kode_penjualan);
         $this->db->order_by('produk.nama_produk ASC');
         return $this->db->get('ipenjualan'); 
     }
