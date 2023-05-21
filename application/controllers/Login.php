@@ -18,6 +18,7 @@ class Login extends CI_Controller {
         $password = $this->input->post('password');
 
         $auth_karyawan = $this->Mod_master->auth_karyawan($username, $password);
+        $auth_distributor = $this->Mod_master->auth_distributor($username, $password);
 
         if($auth_karyawan->num_rows() > 0){
             $data=$auth_karyawan->row_array();

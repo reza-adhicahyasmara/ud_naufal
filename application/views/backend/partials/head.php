@@ -6,21 +6,31 @@
     //PRODUK
     $limit_tok_produk = 0; 
     $limit_dis_produk = 0; 
-    // foreach($this->Mod_master->get_all_produk()->result() as $row) {
-        // if($row->stok_tok_produk <= $row->limit_tok_produk && $row->status_penawaran_produk == "Diterima"){
-        //     $limit_tok_produk += 1;
-        // }
+    foreach($this->Mod_master->get_all_produk()->result() as $row) {
+        if($row->stok_tok_produk <= $row->limit_tok_produk && $row->status_penawaran_produk == "Diterima"){
+            $limit_tok_produk += 1;
+        }
 
-        // if($this->session->userdata('ses_akses') =='Distributor'){
-        //     if($row->stok_dis_produk <= $row->limit_dis_produk && $row->status_penawaran_produk == "Diterima" && $row->id_distributor == $this->session->userdata('ses_id_distributor')){
-        //         $limit_dis_produk += 1;
-        //     }
-        // }
-    // }
+        if($this->session->userdata('ses_akses') =='Distributor'){
+            if($row->stok_dis_produk <= $row->limit_dis_produk && $row->status_penawaran_produk == "Diterima" && $row->id_distributor == $this->session->userdata('ses_id_distributor')){
+                $limit_dis_produk += 1;
+            }
+        }
+    }
+    if($this->session->userdata('ses_akses') =='Distributor'){
+        $data_distributor = $this->Mod_master->get_distributor($this->session->userdata('ses_id_distributor'))->row_array();
+        $url_foto = base_url('assets/img/distributor/'.$data_distributor['foto_distributor']);
+
+        $total_transaksi_dis = 0;
+
+        $notifikasi = $limit_dis_produk + $total_transaksi_dis;
+
+    }
 
 
-    $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
-    if($data_karyawan['level_karyawan'] == "Admin") { 
+    if($this->session->userdata('ses_akses') =='Admin'){
+        $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
+        $url_foto = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
         
         $limit_tok_produk = 0; 
         // foreach($this->Mod_master->get_all_produk()->result() as $row) {
@@ -28,11 +38,11 @@
         //         $limit_tok_produk += 1;
         //     }
         // }
+        $total_transaksi_tok = 0;
 
-        // $notifikasi = $total_pemesanan_ac + $total_pemesanan_ae + $total_pemesanan_as + $chat;
+        $notifikasi = $limit_tok_produk + $total_transaksi_tok;
 
     }
-    $url_foto_karyawan = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
     $url_gambar_profil = base_url('assets/img/banner/user.svg');
 ?>  
 
@@ -243,11 +253,11 @@ by exitus
             <div class="sidebar">
                 <nav class="mt-2" aria-label="">
                     <ul class="nav nav-pills nav-sidebar nav-compact flex-column nav-child-indent" data-widget="treeview" role="menu">
-                        <?php if($data_karyawan['level_karyawan'] =='Admin'){?>
+                        <?php if($this->session->userdata('ses_akses') =='Admin'){?>
                             <li class="nav-item has-treeview"> 
                                 <a href="#" class="nav-link">
                                     <?php if($data_karyawan['foto_karyawan'] != "") { ?>
-                                        <img src="<?php echo $url_foto_karyawan; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover;" alt="Image">
+                                        <img src="<?php echo $url_foto; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover;" alt="Image">
                                     <?php }else{ ?>
                                         <img src="<?php echo $url_gambar_profil; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover; background-color:white; border:1px solid #ced4da;" alt="Image">
                                     <?php } ?> 
@@ -262,7 +272,7 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
 
                             <li class="nav-header text-bold">Transaksi</li>   
-                            <!-- <li class="nav-item"><a href="<?php echo base_url('admin/transaksi/antar_ekspedisi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi Antar Ekspedisi<?php if($total_pemesanan_ae != 0){ ?><span class="badge badge-warning right"> <?php echo $total_pemesanan_ae; ?></span><?php } ?></p></a></li> -->
+                            <li class="nav-item"><a href="<?php echo base_url('admin/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi<?php if($total_transaksi_tok != 0){ ?><span class="badge badge-warning right"> <?php echo $total_transaksi_tok; ?></span><?php } ?></p></a></li>
 
                             <li class="nav-header text-bold">Master Data</li>      
                             <li class="nav-item"><a href="<?php echo base_url('admin/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
@@ -271,11 +281,11 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('admin/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Karyawan</p></a></li>
                                 
 
-                        <?php }elseif($data_karyawan['level_karyawan'] =='Pimpinan'){?>
+                        <?php }elseif($this->session->userdata('ses_akses') =='Pimpinan'){?>
                             <li class="nav-item has-treeview"> 
                                 <a href="#" class="nav-link">
                                     <?php if($data_karyawan['foto_karyawan'] != "") { ?>
-                                        <img src="<?php echo $url_foto_karyawan; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover;" alt="Image">
+                                        <img src="<?php echo $url_foto; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover;" alt="Image">
                                     <?php }else{ ?>
                                         <img src="<?php echo $url_gambar_profil; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover; background-color:white; border:1px solid #ced4da;" alt="Image">
                                     <?php } ?> 
@@ -299,6 +309,29 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/diskon'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-percent"></i><p>Acara Diskon</p></a></li>
                             <li class="nav-item"><a href="<?php echo base_url('pimpinan/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-users"></i><p>Karyawan</p></a></li>
+                    
+                            
+                        <?php }elseif($this->session->userdata('ses_akses') =='Distributor'){?>
+                            <li class="nav-item has-treeview"> 
+                                <a href="#" class="nav-link">
+                                    <?php if($data_distributor['foto_distributor'] != "") { ?>
+                                        <img src="<?php echo $url_foto; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover;" alt="Image">
+                                    <?php }else{ ?>
+                                        <img src="<?php echo $url_gambar_profil; ?>" class="img-circle elevation-1" style="margin-left: -4px; width:37px; height:37px; object-fit: cover; background-color:white; border:1px solid #ced4da;" alt="Image">
+                                    <?php } ?> 
+                                    <p class="text-md" style="margin-left:10px; vertical-align: middle;"><?php echo $data_distributor['nama_distributor']; ?></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item"><a href="<?php echo base_url('profil_distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Profil</p></a></li>
+                                    <li class="nav-item"><a href="<?php echo base_url('profil_distributor/ubah_password'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-lock"></i><p>Ubah Password</p></a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/transaksi'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Transaksi<?php if($total_transaksi_dis != 0){ ?><span class="badge badge-warning right"> <?php echo $total_transaksi_dis; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('distributor/rekening'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-credit-card"></i><p>Rekening</p></a></li>
                         <?php } ?> 
                     </ul>
                     <ul class="nav nav-pills nav-sidebar nav-compact flex-column nav-child-indent" style="position: absolute; bottom: 10px;">

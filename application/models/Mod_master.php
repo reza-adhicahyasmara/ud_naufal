@@ -116,4 +116,62 @@ class Mod_master extends CI_Model {
         $this->db->where('kode_kategori', $kode_kategori);
         $this->db->delete('kategori');
     }
+
+    
+
+    //==========   KATEGORI   ==========//
+    function get_all_produk(){ 
+        $this->db->select('produk.*, distributor.*, kategori.*, penawaran.*, produk.id_distributor AS ID');
+        $this->db->join('distributor', 'distributor.id_distributor = produk.id_distributor', 'inner');
+        $this->db->join('kategori', 'kategori.kode_kategori = produk.kode_kategori', 'inner');
+        $this->db->join('penawaran', 'penawaran.kode_penawaran = produk.kode_penawaran', 'left');
+        $this->db->order_by('produk.nama_produk ASC');
+        return $this->db->get('produk'); 
+    }
+
+    function get_produk($kode_produk){
+        $this->db->select('produk.*, distributor.*, kategori.*');
+        $this->db->join('distributor', 'distributor.id_distributor = produk.id_distributor', 'inner');
+        $this->db->join('kategori', 'kategori.kode_kategori = produk.kode_kategori', 'inner');
+        $this->db->where('kode_produk', $kode_produk);
+        return $this->db->get('produk');
+    }
+
+    function get_produk_distributor($id_distributor){
+        $this->db->select('produk.*, distributor.*, kategori.*');
+        $this->db->join('distributor', 'distributor.id_distributor = produk.id_distributor', 'inner');
+        $this->db->join('kategori', 'kategori.kode_kategori = produk.kode_kategori', 'inner');
+        $this->db->where('produk.id_distributor', $id_distributor);
+        return $this->db->get('produk');
+    }
+
+    function cek_produk($nama_produk){
+        $this->db->where('nama_produk', $nama_produk);
+        return $this->db->get('produk');
+    }
+
+    function cek_produk_penawaran($kode_penawaran){
+        $this->db->where('status_penawaran_produk', 'Penawaran');
+        $this->db->where('kode_penawaran', $kode_penawaran);
+        return $this->db->get('produk');
+    }
+
+    function insert_produk($data){
+        $this->db->insert('produk', $data);
+    }
+
+    function update_produk($kode_produk, $data){
+        $this->db->where('kode_produk', $kode_produk);
+		$this->db->update('produk', $data);
+    }
+
+    function delete_produk($kode){
+        $this->db->where('kode_produk', $kode);
+        $this->db->delete('produk');
+    }
+
+    function delete_all_produk($kode){
+        $this->db->where('kode_produk', $kode);
+        $this->db->delete('produk');
+    }
 }
