@@ -57,19 +57,22 @@
     if($this->session->userdata('ses_akses') =='Admin'){
         $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
         $url_foto = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
-        
-        foreach($this->Mod_master->get_all_produk()->result() as $row) {
-            if($row->stok_tok_produk <= $row->limit_tok_produk){
-                $limit_tok_produk += 1;
-            }
-        }
 
         $notifikasi = $limit_tok_produk + $total_pemesanan_tok;
 
     }
+
     if($this->session->userdata('ses_akses') =='Kasir'){
         $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
         $url_foto = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
+    }
+
+    if($this->session->userdata('ses_akses') =='Pemilik'){
+        $data_karyawan = $this->Mod_master->get_karyawan($this->session->userdata('ses_id_karyawan'))->row_array();
+        $url_foto = base_url('assets/img/karyawan/'.$data_karyawan['foto_karyawan']);
+
+        $notifikasi = $limit_tok_produk + $total_pemesanan_tok;
+
     }
     $url_gambar_profil = base_url('assets/img/banner/user.svg');
 ?>  
@@ -316,7 +319,7 @@ by exitus
                             <li class="nav-item"><a href="<?php echo base_url('admin/rekening'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-credit-card"></i><p>Rekening Perusahaan</p></a></li>
                                 
 
-                        <?php }elseif($this->session->userdata('ses_akses') =='Pimpinan'){?>
+                        <?php }elseif($this->session->userdata('ses_akses') =='Pemilik'){?>
                             <li class="nav-item has-treeview"> 
                                 <a href="#" class="nav-link">
                                     <?php if($data_karyawan['foto_karyawan'] != "") { ?>
@@ -332,18 +335,21 @@ by exitus
                                 </ul>
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
 
-                            <li class="nav-header text-bold">Analisa Data</li>  
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/kata_konsumen'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-smile"></i><p>Kata Konsumen</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/performa_pembeli'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-chart-pie"></i><p>Performa Pembeli</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/performa_produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-chart-bar"></i><p>Performa Produk</p></a></li>
+                            <li class="nav-header text-bold">Transaksi</li>   
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/pemesanan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Pembelian<?php if($total_pemesanan_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_pemesanan_tok; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/penjualan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Penjualan</p></a></li>
 
-                            <li class="nav-header text-bold">Master Data</li>  
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package"></i><p>Produk</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/diskon'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-percent"></i><p>Acara Diskon</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pimpinan/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-users"></i><p>Karyawan</p></a></li>
+                            <li class="nav-header text-bold">Arus Produk</li>  
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/produk_masuk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-down-arrow-alt"></i><p>Stok Masuk</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/produk_keluar'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-up-arrow-alt"></i><p>Stok Keluar</p></a></li>
+
+                            <li class="nav-header text-bold">Master Data</li>      
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/distributor'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bxs-truck"></i><p>Distributor </p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/produk'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-package nav-icon"></i><p>Produk <?php if($limit_tok_produk != 0){ ?><span class="badge badge-danger right"> <?php echo $limit_tok_produk; ?></span><?php } ?></p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/karyawan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-user"></i><p>Karyawan</p></a></li>
                                 
 
                             <?php }elseif($this->session->userdata('ses_akses') =='Kasir'){?>
@@ -390,7 +396,7 @@ by exitus
                         <?php } ?> 
                     </ul>
                     <ul class="nav nav-pills nav-sidebar nav-compact flex-column nav-child-indent" style="position: absolute; bottom: 10px;">
-                        <li class="nav-item"><a href="<?php echo base_url('login/logout'); ?>" class="nav-link bg-danger"><i class="nav-icon bx bx-fw bx-sign-out"></i><p>Logout</p></a></li>
+                        <li class="nav-item"><a href="<?php echo base_url('login/logout'); ?>" class="nav-link bg-danger"><i class="nav-icon bx bx-fw bx-log-out"></i><p>Logout</p></a></li>
                     </ul>
                 </nav>
             </div>

@@ -1,0 +1,119 @@
+<?php $this->load->view('backend/partials/head.php') ?>
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1 class="m-1 text-dark"><span class="nav-icon bx bx-fw bx-user"></span> Karyawan</h1>
+                </div>
+                <div class="col-sm-6 float-sm-right">
+                    <ol class="breadcrumb float-sm-right m-2">
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-info card-outline card-outline-tabs">
+                <div class="card-header p-0 border-bottom-0">
+                    <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Admin<a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-four-kasir-tab" data-toggle="pill" href="#custom-tabs-four-kasir" role="tab" aria-controls="custom-tabs-four-kasir" aria-selected="false">Kasir</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-four-pemilik-tab" data-toggle="pill" href="#custom-tabs-four-pemilik" role="tab" aria-controls="custom-tabs-four-pemilik" aria-selected="false">Pemilik</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="custom-tabs-four-tabContent">
+                        <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                            <div id="content_admin">
+                                <!--LOAD DATA-->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-kasir" role="tabpanel" aria-labelledby="custom-tabs-four-kasir-tab">
+                            <div id="content_kasir">
+                                <!--LOAD DATA-->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-pemilik" role="tabpanel" aria-labelledby="custom-tabs-four-pemilik-tab">
+                            <div id="content_pemilik">
+                                <!--LOAD DATA-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<?php $this->load->view('backend/partials/footer.php') ?>
+<?php $this->load->view('backend/partials/script.php') ?>
+
+<!-----------------------FUNGSI----------------------->
+<script type="text/javascript">
+    var url_karyawan =  "<?php echo base_url('pemilik/karyawan'); ?>";
+    var url = url_karyawan ;
+    $('ul.nav-sidebar a').filter(function() {
+        return this.href == url;
+    }).addClass('active ');
+    $('ul.nav-treeview a').filter(function() {
+        return this.href == url;
+    }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+</script>
+
+
+<script type="text/javascript">
+    load_data_admin();
+	function load_data_admin(){
+		$.ajax({
+			method : "GET",
+			url : "<?php echo base_url('pemilik/karyawan/load_data_admin'); ?>",
+			beforeSend : function(){
+				$('#content_admin').html('<div style="text-align:center"><i class="fa fa-refresh fa-spin fa-3x fa-fw" style="margin-top: 30px; margin-bottom: 30px;" aria-hidden="true"></i></div>');
+			},
+			success : function(response){
+				$('#content_admin').html(response);
+			}
+		});
+    };
+
+    load_data_kasir();
+    function load_data_kasir(){
+        $.ajax({
+            method : "GET",
+            url : "<?php echo base_url('pemilik/karyawan/load_data_kasir'); ?>",
+            beforeSend : function(){
+				$('#content_kasir').html('<div style="text-align:center"><i class="fa fa-refresh fa-spin fa-3x fa-fw" style="margin-top: 30px; margin-bottom: 30px;" aria-hidden="true"></i></div>');
+            },
+            success : function(response){
+                $('#content_kasir').html(response);
+            }
+        });
+    };
+
+    load_data_pemilik();
+    function load_data_pemilik(){
+        $.ajax({
+            method : "GET",
+            url : "<?php echo base_url('pemilik/karyawan/load_data_pemilik'); ?>",
+            beforeSend : function(){
+                $('#content_pemilik').html('<div style="text-align:center"><i class="fa fa-refresh fa-spin fa-3x fa-fw" style="margin-top: 30px; margin-bottom: 30px;" aria-hidden="true"></i></div>');
+            },
+            success : function(response){
+                $('#content_pemilik').html(response);
+            }
+        });
+    };
+</script>
+
+</body>
+</html>
