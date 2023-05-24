@@ -17,11 +17,80 @@
     
     <section class="content">
         <div class="container-fluid">
-            <div class="card card-outline card-info">
-                <div class="card-body"> 
-                    <h1>Dalam Pengembangan...</h1>
-                </div>
-            </div>
+            <div class="row">    
+                <div class="col-md-2 col-6">
+                    <div class="small-box bg-white">
+                        <div class="inner">
+                            <span>Penerimaan Penawaran Produk</span>
+                            <br>
+                            <span class="text-lg text-bold"><?php echo number_format($total_proses_penawaran, 0, ".", "."); ?> Produk</span>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-md bx-news"></i>
+                        </div>
+                    </div>
+                </div>          
+                <div class="col-md-2 col-6">
+                    <div class="small-box bg-white">
+                        <div class="inner">
+                            <span>Proses Penawaran Produk</span>
+                            <br>
+                            <span class="text-lg text-bold"><?php echo number_format($total_terima_penawaran, 0, ".", "."); ?> Produk</span>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-md bx-news"></i>
+                        </div>
+                    </div>
+                </div>          
+                <div class="col-md-2 col-6">
+                    <div class="small-box bg-white">
+                        <div class="inner">
+                            <span>Menunggu Pembayaran</span>
+                            <br>
+                            <span class="text-lg text-bold"><?php echo number_format($total_menunggu_pembayaran, 0, ".", "."); ?> Transaksi</span>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-md bx-refresh"></i>
+                        </div>
+                    </div>
+                </div>      
+                <div class="col-md-2 col-6">
+                    <div class="small-box bg-white">
+                        <div class="inner">
+                            <span>Validasi Pembayaran</span>
+                            <br>
+                            <span class="text-lg text-bold"><?php echo number_format($total_validasi_pembayaran, 0, ".", "."); ?> Transaksi</span>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-md bx-check-square"></i>
+                        </div>
+                    </div>
+                </div>          
+                <div class="col-md-2 col-6">
+                    <div class="small-box bg-white">
+                        <div class="inner">
+                            <span>Dalam Pengiriman</span>
+                            <br>
+                            <span class="text-lg text-bold"><?php echo number_format($total_dalam_pengiriman, 0, ".", "."); ?> Transaksi</span>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-md bxs-truck"></i>
+                        </div>
+                    </div>
+                </div>         
+                <div class="col-md-2 col-6">
+                    <div class="small-box bg-white">
+                        <div class="inner">
+                            <span>Penjualan</span>
+                            <br>
+                            <span class="text-lg text-bold">Rp. <?php echo number_format($total_penjualan, 0, ".", "."); ?></span>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-md bx-money"></i>
+                        </div>
+                    </div>
+                </div>                             
+            </div> 
         </div>
     </section>   
 </div> 
