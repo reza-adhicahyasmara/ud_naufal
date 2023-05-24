@@ -8,6 +8,7 @@
                 </div>
                 <div class="col-sm-6 float-sm-right">
                     <ol class="breadcrumb float-sm-right m-2">
+                        <a href="<?php echo base_url('admin/penjualan/invoice/').$data_detail['kode_penjualan'];?>"target="_blank" class="btn btn-warning" style="margin-left: 5px;"><span class="bx bx-fw bx-printer"></span> Print</a>
                     </ol>
                 </div>
             </div>

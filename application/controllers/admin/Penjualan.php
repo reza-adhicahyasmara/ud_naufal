@@ -56,7 +56,7 @@ class Penjualan extends CI_Controller {
             $data['data_detail'] = $this->Mod_transaksi->get_penjualan($kode_penjualan)->row_array();
             $data['list_produk'] = $this->Mod_transaksi->get_item_penjualan($kode_penjualan);
 
-            $this->load->view("backend/cetak_berkas/body_invoice_penjualan",$data);
+            $this->load->view("backend/cetak_berkas/invoice_penjualan",$data);
         }
         else{ 
             redirect('login');

@@ -56,7 +56,7 @@ class Pemesanan extends CI_Controller {
             $data['data_detail'] = $this->Mod_transaksi->get_pemesanan($kode_pembelian)->row_array();
             $data['list_produk'] = $this->Mod_transaksi->get_item_pemesanan($kode_pembelian);
 
-            $this->load->view("backend/cetak_berkas/body_invoice_pemesanan",$data);
+            $this->load->view("backend/cetak_berkas/invoice_pemesanan",$data);
         }
         else{ 
             redirect('login');
