@@ -209,4 +209,31 @@ class Mod_transaksi extends CI_Model {
 	}
 
 
+    
+    //==========   KERANJANG PENJUALAN  ==========//
+
+    function get_laporan_pemesanan($tanggal_awal, $tanggal_akhir, $status_pembelian){ 
+        $this->db->select('pembelian.*, distributor.*, rekening.*, bank.*');
+        $this->db->join('distributor', 'distributor.id_distributor = pembelian.id_distributor', 'left');
+        $this->db->join('rekening', 'rekening.kode_rekening = pembelian.kode_rekening', 'left');
+        $this->db->join('bank', 'bank.kode_bank = rekening.kode_bank', 'left');
+        $this->db->where("pembelian.tanggal_pengajuan_pembelian BETWEEN '$tanggal_awal' AND '$tanggal_akhir'");
+        $this->db->where("pembelian.status_pembelian IN($status_pembelian)");
+        $this->db->order_by('pembelian.tanggal_pengajuan_pembelian ASC');
+        return $this->db->get('pembelian'); 
+    }
+
+    
+
+
+    
+    //==========   KERANJANG PEMBELIAN  ==========//
+
+    function get_laporan_penjualan($tanggal_awal, $tanggal_akhir){ 
+        $this->db->select('penjualan.*');
+        $this->db->where("penjualan.tanggal_penjualan BETWEEN '$tanggal_awal' AND '$tanggal_akhir'");
+        $this->db->order_by('penjualan.tanggal_penjualan ASC');
+        return $this->db->get('penjualan'); 
+    }
+
 }

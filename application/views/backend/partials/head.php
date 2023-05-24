@@ -271,7 +271,7 @@ by exitus
         <nav class="main-header navbar navbar-expand navbar-info navbar-light text-sm" aria-label="">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><span class="bx bx-fw bx-bars"></span></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><span class="bx bx-fw bx-menu"></span></a>
                 </li>
             </ul>
         </nav>

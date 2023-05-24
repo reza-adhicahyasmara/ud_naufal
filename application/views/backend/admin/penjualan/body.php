@@ -8,6 +8,7 @@
                 </div>
                 <div class="col-sm-6 float-sm-right">
                     <ol class="breadcrumb float-sm-right m-2">
+                        <button type="button" class="btn btn-info btn_laporan" style="width: 100%;"  target="_blank"><span class="bx bx-fw bx-file"></span> Buat Laporan </button>
                     </ol>
                 </div>
             </div>
@@ -61,6 +62,38 @@
     </section>
 </div>
 
+<form role="form" id="form_laporan" method="post" aria-label="">
+    <div id="modal_laporan" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong><span class="modal-title text-lg" id="myModalLabel"></span></strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tanggal</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="tanggal_awal" name="tanggal_awal" placeholder="Tanggal Awal">
+                            </div>
+                            <div class="col-6">      
+                                <input type="text" class="form-control" id="tanggal_akhir" name="tanggal_akhir" placeholder="Tanggal Akhir">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="bx bx-fw bx-x"></span> Batal</button>
+                    <button type="submit" id="btn_buat_laporan" class="btn bg-info"><span class="bx bx-fw bxs-file-export"></span> Ekspor Excel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <?php $this->load->view('backend/partials/footer.php') ?>
 <?php $this->load->view('backend/partials/script.php') ?>
 
@@ -85,3 +118,89 @@
 
 </script>
 
+
+<!-----------------------LAPORAN TRANSAKSI----------------------->
+<script type="text/javascript">
+    $(document).on('click', '.btn_laporan', function() {
+        $('#modal_laporan').modal('show');
+        $('.modal-title').text('Buat Laporan');
+    }); 
+
+    $(document).ready(function(){   
+        $('#tanggal_awal').datetimepicker({
+            //inline:true,
+            autoclose: true,
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+
+    $(document).ready(function(){   
+        $('#tanggal_akhir').datetimepicker({
+            //inline:true,
+            autoclose: true,
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+
+    $(document).ready(function() {
+        $('#btn_buat_laporan').on("click",function(){
+            $("#form_laporan").valid();
+        });
+
+        $('#form_laporan').validate({
+            rules: {
+                tanggal_awal: {
+                    required: true,
+                },
+                tanggal_akhir: {
+                    required: true,
+                },
+            },
+            messages: {
+                tanggal_awal: {
+                    required: "Harus diisi",
+                },
+                tanggal_akhir: {
+                    required: "Harus diisi",
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
+            submitHandler: function() {
+                var tanggal_awal = $('#tanggal_awal').val();
+                var tanggal_akhir = $('#tanggal_akhir').val();
+
+                $.ajax({
+                    url : "<?php echo base_url('admin/penjualan/laporan_data_penjualan'); ?>",
+                    method: 'POST',
+                    data: {
+                        tanggal_awal:tanggal_awal,
+                        tanggal_akhir:tanggal_akhir
+                    },
+                    success: function(response){ 
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data telah disimpan!',
+                            text: 'Folder Penyimpanan C://xampp/htdocs/ud_naufal/assets/berkas',
+                            showConfirmButton: true,
+                            confirmButtonColor: '#ffc107',
+                        }).then(function(){
+                            window.open("file:///C:/");
+                        })
+                    }
+                }); 
+            }
+        });
+    });
+</script>
