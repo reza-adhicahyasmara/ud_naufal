@@ -151,7 +151,7 @@ $('button#btn_checkout').on("click",function(){
                             confirmButtonColor: '#17a2b8',
                             timer: 3000
                         }).then(function(){
-                            window.location.replace(url_outlet);
+                            window.location.reload();
                         });
                     } else {
                         Swal.fire({
