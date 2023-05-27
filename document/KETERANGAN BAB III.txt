@@ -1,0 +1,111 @@
+===>>> SISTEM YANG SEDANG BERJALAN PEMBELIAN PRODUK <<<===
+- Petugas gudang melakukan pemeriksaan stok barang digudang. Jika terdapat stok kosong maka akan melakukan laporan kepada admin untuk malakukan pemesanan.
+- Petugas Admin melakukan pemesanan kepada distributor melalui telepon atau aplikasi whatsapp.
+- Distributor akan menerima pesanan dari admin, kemudian malakukan pengecekan stok di gudang supplier. Jika stok produk tersedia maka akan dilakukan pengrimiman barang.
+- Admin akan menerima nota pembayaran dan admin akan melakukan pelunasan pembayaran.
+- Petugas gudang akan menerima produk yang dipesan dan melaporakan produk yang dibeli telah sesuai pesanan.
+- Admin melakukan rekap pembelian dan berkas dapat dikrimkan kepada pemilik.
+
+
+
+
+===>>> SISTEM YANG SEDANG BERKALAN PENJUALAN PRODUK <<<===
+- Konsumen datang ke toko, mencari produk yang akan dibeli, kemudian menyerahkan barang yang akan dibeli kepada kasir.
+- Petugas kasir menerima produk yang dibawa oleh konsumen, kemudian menghitung belanjaan.
+- Konsumen melakukan pembayaran dan kasir menerima pembayaran.
+- Pada saat closing penjualan, kasir akan menyetorkan dan membuat laporan kasir kepada admin.
+- Admin setiap hari akan menerima laporan kasir, merekap data setiap minggu, bulan dan tahun. Hasil rekapan dapat dikirimkan ke pemilik.
+
+
+
+===>>> SISTEM YANG DIUSULKAN  <<<===
+- Admin, Distibutor dan Pemilik diharuskan melakukan login untuk dapat mengakses sistem.
+- Admin dapat mengelola data master yang ada di Agen berupa data distributor, data produk, data kategori, data karyawan, data rekening bank.
+- Distributor yang telah memiliki akun dapat mengkases sistem, distributor dapat mengelola data data master berupa data produk, dan data rekening bank.
+- Distributor dapat menawarkan produk yang sudah dimasukan sebelumnya.
+- Admin dapat memverifikasi produk yang ditawarkan oleh distributor, jika produk diterima maka produk akan muncul pada katalog pembelian, jika produk tidak diterima tidak akan muncul dikatalog pembelian tetapi dapat ditawarkan kembali oleh distributor. 
+- Admin dapat melakukan pembelian produk yang ada pada katalog produk, pada saat akan memasukan qty produk, sistem akan memberikan saran pembelian berdasarkan hasil perhitungan EQO dan ROP. Setiap produk yang dipilih akan masuk kedalam keranjang dan kemudia admin melakukan checkout dan mengisi rekening Distributor yang sebelumnya sudah disiapkan oleh Distributor itu sendiri.
+- Pemesanan yang sudah dibuat admin dapat melakuakn pembayaran dengan cara upload berkas berupa bukti pembayaran.
+- Transksi yang sudah masuk dan sudah dibayarkan, distributor dapat memvalidasi pembayaran sesuai bukti pembayaran yang dilampirkan.
+- Distributor yang telah memvalidasi pembayaran dapat melakukan pengiriman produk.
+- Setelah produk diterima oleh Admin, Admin dapat melakukan pengubahan status pesanan menjadi selesai secara otomatis jumlah stok produk yang dipesan akan bertambah, dan riwayat pembelian akan terlihat.
+- Kasir yang terdaftar pada sistem dapat melakakan transaksi penjualan, input data sesuai belanjaan konsumen. Produk yang terjual secara otomatis akan mengurangi stok dan menampilkan riwayat penjualan.
+- Pemilik yang terdaftar disistem dapat melakukan monitoring data yang ada disistem berupa data master, data transaksi pembelian, dan data transaksi penjualan.
+- Admin dapat mencetetak data laporan berupa berkas yang dapat diarsipkan dan diberkan kepada pemilik.
+
+
+
+===>>> DIAGRAM KONTEKS <<<===
+Entitas Admin
+Entitas Admin bertugas melakukan pengelolaan data master untuk memenuhi kebutuhan kegiatan operasional, selain itu juga admin dapat melakukan, verifikasi produk yang ditawarkan distributor, pemesanan produk kepada distributor, melihat transaksi penjualan dan pembelian, dan membuat laporan.
+
+Entitas Distributor
+Entitas Distributor betugas pengelolaan data master yang ada diruang lingkup distributor meliputi, data produk dan data rekening bank. Produk yang sudah diinput oleh distributor dapat ditawarkan kepada pihak agen untuk dapat dilakukan transaksi pembelian. Pembelian yang telah dibuat oleh admin dapat dikelola oleh distributor, mevalidasi pembayaran dan mengirimkan produk sesuai pesanan.
+
+Entitas Kasir
+Entitas Kasir bertugas melakukan transaksi pembelian oleh konsumen, dan hasil penjualan akan tersimpan diriwayat penjualan.
+
+Entitas Pemilik
+Entitas Pemilik bertugas melakukan monitoring data dan memantau aktifitas data yang yang ada pada sistem.
+
+
+
+===>>> DFD LV 0 <<<===
+Proses 1.0 Login
+Pada proses ini semua pengguna Admin, Distributor, Kasir dan Pemilik diharuskan masuk kedalam sistem untuk mendapatkan akses ke sistem sesuai level masing-masing.
+
+Proses 2.0 Kelola Master Data
+Pada proses ini Admin dan Distributor dapat melakukan pengelolaan data master masing-masing. Admin dapat mengelola data distributor, data produk di agen, data kategori, data karyawan, dan data rekening. Sedangkan distributor mengelola data produk di distributor dan data rekening.
+
+Proses 3.0 Kelola Penawaran Produk
+Pada proses ini Distributor dapat menawarkan produknya kepada pihak agen, dengan cara mengajukan proposal penawran dan memberikan daftar produk. Kemuddian admin dapat memverifikasi penerimaan produk, jika produk yang diterima akan muncul di katalog admin, jika tidak Distributor dapat melakukan penawaran kembali.
+
+Proses 4.0 Transaksi Pembelian Produk
+Pada proses ini Admin dapat melakukan pembelian produk kepada Distributor, melakukan pembayaran, memvalidasi pembayaran, mengirim status pengiriman, dan menerima status pengiriman. Secara otomatis stok produk terupdate dan terdapat riwayat pembelian yang dapat dilihat oleh pihak Distributor maupun pihak Agen.
+
+Proses 5.0 Transaksi Penjualan Produk
+Pada proses ini kasir dapat melakukan penjualan produk kepada konsumen, riwayat penjualan akan tercatat oleh sistem
+dan stok produk di Agen secara otomatis akan terupadate.
+
+Proses 6.0 Cetak Invoice Transaksi & Laporan Transaksi
+Pada proses ini admin dapat melakukan pencetakan data invoice dan laporan transksi yang ada pada sistem sesuai kebutuhan yang diperlukan.
+
+
+
+===>>> DFD LV 2.1 Kelola Data Master <<<===
+Proses 2.1 Proses Kelola Data Karyawan
+Pada proses ini Admin dapat mengelola data karyawan, dengan cara tambah edit hapus data. Sedangkan Kasir dan Pemilih hanya dapat melakukan edit data saja.
+
+Proses 2.2 Proses Kelola Data Distributor
+Pada proses ini Admin dapat mengelola data Distributor, dengan cara tambah edit hapus data. Sedangkan Distributor hanya dapat melakukan edit data saja.
+
+Proses 2.3 Proses Kelola Data Kategori
+Pada proses ini Admin dapat mengelola data kategori, dengan cara tambah edit hapus data. Data ini difungsikan untuk data statik pemilihan kategori pada produk.
+
+Proses 2.4 Proses Kelola Data Produk
+Pada proses ini Distributor dapat mengelola data produk, dengan cara tambah edit hapus data. Sedangkan admin hanya dapat mengedit data saja. Data ini difungsikan untuk proses transkasi jual beli produk.
+
+Proses 2.5 Proses Kelola Data Rekening
+Pada proses ini Admin dsan Distributor dapat mengelola data rekening, dengan cara tambah edit hapus data. Data ini difungsikan untuk data statik pemilihan nomer rekening untuk transfer pembayaran.
+
+
+
+===>>> DFD LV 4.1 Kelola Data Master <<<===
+Proses 4.1 Tambah Keranjang
+Pada proses ini admin dapat menambahkan produk kedalam keranjang pemesanan, produk yang tersedia pada katalog produk yang penwarannya telah diterima oleh Admin.
+
+Proses 4.2 Proses EOQ & ROP
+Pada proses ini pada saat pemilihan produk pada katalog pemesanan, akan dilakukan perhitungan EOQ & ROP yang hasil perhitungan tersebut akan memberikan saran qty minimum pembelian.
+
+Proses 4.3 Proses Checkout
+Pada proses ini setelah Admin memasukan daftar keadalam keranjang belanjaan, admin dapat memilih rekening sebelum melakukan checkout.
+
+Proses 4.4 Proses Pembayaran
+Pada proses ini setelah pesanan diubuat, admin dapat malakukan upload pembayaran, dan Distributor dapat memvalidasi pembayaran.
+
+Proses 4.5 Proses Pengriman Produk
+Pada proses ini Distributor yang telah melakukan validasi pembayaran dapat mengkroscek daftar produk yang akan dikirm.
+
+Proses 4.6 Proses Peneriamaan Produk
+Pada proses ini Admin dapat mengkroscek daftar produk sesuai pesanan. 
+
