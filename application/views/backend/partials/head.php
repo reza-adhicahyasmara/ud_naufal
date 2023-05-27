@@ -16,6 +16,15 @@
                 $limit_dis_produk += 1;
             }
         }
+    }    
+
+
+    //PENAWARAN
+    $total_penawaran_tok = 0; 
+    foreach($this->Mod_master->get_all_penawaran_distributor()->result() as $row) {
+        if($row->status_penawaran == "1"){
+            $total_penawaran_tok += 1;
+        }
     }
 
 
@@ -301,7 +310,7 @@ by exitus
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                             <li class="nav-item"><a href="<?php echo base_url('admin/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('admin/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran<?php if($total_penawaran_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_penawaran_tok; ?></span><?php } ?></p></a></li>
 
                             <li class="nav-header text-bold">Transaksi</li>   
                             <li class="nav-item"><a href="<?php echo base_url('admin/pemesanan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Pembelian<?php if($total_pemesanan_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_pemesanan_tok; ?></span><?php } ?></p></a></li>
@@ -336,7 +345,7 @@ by exitus
                             </li>
                             <li class="nav-item"><hr style="margin-top: 0.4rem"></li>
                             <li class="nav-item"><a href="<?php echo base_url('pemilik/dashboard'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-home"></i><p>Dashboard</p></a></li>
-                            <li class="nav-item"><a href="<?php echo base_url('pemilik/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran</p></a></li>
+                            <li class="nav-item"><a href="<?php echo base_url('pemilik/penawaran'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-calendar-check"></i><p>Penawaran<?php if($total_penawaran_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_penawaran_tok; ?></span><?php } ?></p></a></li>
 
                             <li class="nav-header text-bold">Transaksi</li>   
                             <li class="nav-item"><a href="<?php echo base_url('pemilik/pemesanan'); ?>" class="nav-link"><i class="nav-icon bx bx-fw bx-book"></i><p>Pembelian<?php if($total_pemesanan_tok != 0){ ?><span class="badge badge-danger right"> <?php echo $total_pemesanan_tok; ?></span><?php } ?></p></a></li>
