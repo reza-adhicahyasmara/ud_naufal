@@ -50,7 +50,7 @@ class Produk extends CI_Controller {
         $h_produk = $this->input->post('h_produk');
         $lt_produk = $this->input->post('lt_produk');
         $ss_produk = $this->input->post('ss_produk');
-        $tahun = 365;
+        $tahun = 317;
         $au_produk = (float)$d_produk / (float)$tahun;
 
         echo 1;     

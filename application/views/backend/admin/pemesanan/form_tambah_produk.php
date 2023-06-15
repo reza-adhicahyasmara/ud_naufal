@@ -92,7 +92,7 @@
             <p>Diketahui</p>
             <h6>
                 Lead Time (LT) = <b><?php echo number_format($lt_produk,0, ",", ".")." Hari"; ?></b><br>
-                Average Usage (AU) = <b><?php echo number_format($d_produk,0, ",", ".")." ".$data['satuan_produk']; ?> / 365 Hari</b><br>
+                Average Usage (AU) = <b><?php echo number_format($d_produk,0, ",", ".")." ".$data['satuan_produk']; ?> / 317 Hari</b><br>
                 Safety Stock (SS) = <b><?php echo number_format($ss_produk,0, ",", ".")." ".$data['satuan_produk']; ?></b><br><br>
             </h6>
             <p>Hitung</p>
